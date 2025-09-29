@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logs - NBCFDC Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root { --nbcfdc-blue: #0072BC; --nbcfdc-orange: #F7941E; }
+        body { background-color: #f4f7fc; }
+        @keyframes slideUpFadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+        .animated-item { opacity: 0; animation: slideUpFadeIn 0.6s ease-out forwards; }
+        .content-card { animation-delay: 0.1s; }
+        tbody tr { opacity: 0; animation: slideUpFadeIn 0.5s ease-out forwards; }
+        tbody tr:nth-child(1) { animation-delay: 0.2s; } tbody tr:nth-child(2) { animation-delay: 0.3s; }
+        tbody tr:nth-child(3) { animation-delay: 0.4s; }
+        .tab-button { transition: all 0.2s ease-in-out; border-bottom: 4px solid transparent; }
+        .tab-button.active { border-bottom-color: var(--nbcfdc-orange); color: var(--nbcfdc-blue); background-color: white; }
+    </style>
+</head>
+<body>
+    <header class="bg-[var(--nbcfdc-blue)] text-white p-4 shadow-lg sticky top-0 z-10">
+        <div class="container mx-auto flex justify-between items-center"><h1 class="text-xl md:text-2xl font-bold">NBCFDC Admin</h1><a href="admin_login.html" class="text-sm">Logout</a></div>
+    </header>
+    <nav class="bg-gray-200 shadow-sm sticky top-[68px] z-10"><div class="container mx-auto flex overflow-x-auto">
+        <a href="nbcfdc_dashboard.html" class="tab-button text-gray-600 font-semibold py-3 px-6">Dashboard</a>
+        <a href="admin_beneficiary_management.html" class="tab-button text-gray-600 font-semibold py-3 px-6">Beneficiary Management</a>
+        <a href="admin_loan_management.html" class="tab-button text-gray-600 font-semibold py-3 px-6">Loan Management</a>
+        <a href="admin_reports.html" class="tab-button text-gray-600 font-semibold py-3 px-6">Reports</a>
+        <a href="admin_logs.html" class="tab-button active py-3 px-6">Logs</a>
+    </div></nav>
+    <main class="container mx-auto p-6">
+        <div class="bg-white p-6 rounded-lg shadow-xl animated-item content-card">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Consent & Data Access Logs</h2>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left">
+                    <thead class="bg-gray-50 text-gray-600 uppercase text-sm"><tr><th class="p-4">Timestamp</th><th class="p-4">Aadhaar</th><th class="p-4">Action</th><th class="p-4">Source</th></tr></thead>
+                    <tbody class="divide-y divide-gray-200">
+                        <tr><td class="p-4">26-Sep-25 10:30</td><td class="p-4">XXXX-5432</td><td class="p-4 text-blue-600">Data fetched</td><td class="p-4">System</td></tr>
+                        <tr><td class="p-4">26-Sep-25 10:29</td><td class="p-4">XXXX-5432</td><td class="p-4 text-green-600">Loan Approved</td><td class="p-4">Officer123</td></tr>
+                        <tr><td class="p-4">25-Sep-25 16:15</td><td class="p-4">XXXX-9876</td><td class="p-4 text-gray-600">Consent Given</td><td class="p-4">System</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
+

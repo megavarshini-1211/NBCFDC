@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - NBCFDC</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root { 
+            --nbcfdc-blue: #0072BC; 
+            --nbcfdc-green: #047857; /* A nice, rich green for the toggle */
+        }
+        @keyframes slideUpFadeIn {
+            from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); }
+        }
+        .animated-item { opacity: 0; animation: slideUpFadeIn 0.6s ease-out forwards; }
+        .header { animation-delay: 0.1s; }
+        .main-card { animation-delay: 0.2s; }
+        .info-section-1 { animation-delay: 0.4s; }
+        .info-section-2 { animation-delay: 0.5s; }
+        .info-section-3 { animation-delay: 0.6s; }
+        .submit-button { transition: all 0.3s ease; }
+        .submit-button:hover { transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0, 114, 188, 0.3); }
+
+        /* --- Consent Slider Styles --- */
+        .consent-container { transition: background-color 0.3s ease-in-out; }
+        .toggle-checkbox:checked { right: 0; border-color: var(--nbcfdc-green); }
+        .toggle-checkbox:checked + .toggle-label { background-color: var(--nbcfdc-green); }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <header class="bg-[var(--nbcfdc-blue)] text-white p-4 shadow-lg animated-item header">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-xl font-bold">NBCFDC Portal</h1>
+            <a href="beneficiary_dashboard.html" class="text-sm hover:underline">← Back to Dashboard</a>
+        </div>
+    </header>
+    <main class="container mx-auto p-6">
+        <div class="animated-item main-card bg-white p-8 rounded-2xl shadow-2xl max-w-3xl mx-auto">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8">My Profile & Consents</h2>
+            <div class="animated-item info-section-1 mb-8 space-y-4">
+                <h3 class="text-xl font-semibold border-b pb-2">Personal Information</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 text-gray-700">
+                    <div><strong>Name:</strong> Asha Devi</div> <div><strong>Aadhaar:</strong> XXXX-9876</div>
+                    <div><strong>Mobile:</strong> +91-XX1234</div> <div><strong>DOB:</strong> 15/06/1985</div>
+                </div>
+            </div>
+            <div class="animated-item info-section-2 mb-8">
+                <h3 class="text-xl font-semibold border-b pb-2 mb-4">Bank Account Details</h3>
+                <div class="space-y-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label for="bank-account" class="block text-sm font-medium text-gray-700">Bank Account Number</label>
+                            <input type="text" id="bank-account" class="mt-1 w-full px-4 py-2.5 border border-gray-300 rounded-md" value="XXXX XXXX 5678">
+                        </div>
+                        <div>
+                            <label for="ifsc-code" class="block text-sm font-medium text-gray-700">IFSC Code</label>
+                            <input type="text" id="ifsc-code" class="mt-1 w-full px-4 py-2.5 border border-gray-300 rounded-md" value="SBIN0001234">
+                        </div>
+                    </div>
+                    <div class="text-right">
+                         <button class="submit-button bg-[var(--nbcfdc-blue)] text-white px-6 py-2 rounded-md font-semibold">Save Changes</button>
+                    </div>
+                </div>
+            </div>
+            <div class="animated-item info-section-3">
+                 <h3 class="text-xl font-semibold border-b pb-2 mb-4">Consent Management</h3>
+                 <div id="consent-container" class="p-4 rounded-lg flex items-center justify-between consent-container">
+                    <label for="consent-check" class="flex-grow pr-4 text-gray-700">
+                       Allow NBCFDC to fetch my financial & utility data for credit scoring.
+                    </label>
+                    <div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+                        <input type="checkbox" id="consent-check" class="toggle-checkbox absolute block w-7 h-7 rounded-full bg-white border-4 appearance-none cursor-pointer" checked/>
+                        <label for="consent-check" class="toggle-label block overflow-hidden h-7 rounded-full bg-gray-300 cursor-pointer"></label>
+                    </div>
+                 </div>
+            </div>
+        </div>
+    </main>
+    <script>
+        const consentCheck = document.getElementById('consent-check');
+        const consentContainer = document.getElementById('consent-container');
+
+        function updateConsentVisuals() {
+            if (consentCheck.checked) {
+                consentContainer.classList.remove('bg-gray-50');
+                consentContainer.classList.add('bg-green-50');
+            } else {
+                consentContainer.classList.remove('bg-green-50');
+                consentContainer.classList.add('bg-gray-50');
+            }
+        }
+        
+        // Run on page load
+        document.addEventListener('DOMContentLoaded', updateConsentVisuals);
+        
+        // Run when toggle is clicked
+        consentCheck.addEventListener('change', updateConsentVisuals);
+    </script>
+</body>
+</html>
+

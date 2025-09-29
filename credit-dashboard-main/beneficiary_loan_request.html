@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply for Loan - NBCFDC</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root { --nbcfdc-blue: #0072BC; --nbcfdc-green: #006838; }
+        @keyframes slideUpFadeIn {
+            from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes popIn {
+            from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); }
+        }
+        .main-card, .header { animation: slideUpFadeIn 0.6s ease-out forwards; }
+        #results-section.active { display: block; animation: popIn 0.5s ease-out forwards; }
+        #results-section { display: none; }
+        .submit-button { transition: all 0.3s ease; }
+        .submit-button:hover { transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0, 114, 188, 0.3); }
+        .loader { border: 4px solid #f3f3f3; border-top: 4px solid var(--nbcfdc-blue); border-radius: 50%; width: 30px; height: 30px; animation: spin 1s linear infinite; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <header class="bg-[var(--nbcfdc-blue)] text-white p-4 shadow-lg header">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-xl font-bold">NBCFDC Portal</h1>
+            <a href="beneficiary_dashboard.html" class="text-sm hover:underline">← Back to Dashboard</a>
+        </div>
+    </header>
+    <main class="container mx-auto p-6">
+        <div class="main-card bg-white p-8 rounded-2xl shadow-2xl max-w-2xl mx-auto">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">New Loan Application</h2>
+            <form id="loan-form" class="space-y-4">
+                <div>
+                    <label for="loan-amount" class="block text-sm font-medium text-gray-700 mb-1">Loan Amount (₹)</label>
+                    <input type="number" id="loan-amount" placeholder="e.g., 50000" class="w-full px-4 py-2.5 border border-gray-300 rounded-md focus:outline-none focus:border-[var(--nbcfdc-blue)]" required>
+                </div>
+                <div>
+                    <label for="loan-purpose" class="block text-sm font-medium text-gray-700 mb-1">Loan Purpose</label>
+                    <select id="loan-purpose" class="w-full px-4 py-2.5 border border-gray-300 rounded-md focus:outline-none" required>
+                        <option>Business</option> <option>Education</option> <option>Housing</option> <option>Other</option>
+                    </select>
+                </div>
+                 <div>
+                    <label for="loan-tenure" class="block text-sm font-medium text-gray-700 mb-1">Requested Tenure (Months)</label>
+                    <input type="number" id="loan-tenure" placeholder="e.g., 24" class="w-full px-4 py-2.5 border border-gray-300 rounded-md" required>
+                </div>
+                <button type="button" id="submit-btn" onclick="checkEligibility()" class="submit-button w-full bg-[var(--nbcfdc-blue)] text-white py-3 rounded-md font-semibold text-lg mt-6 flex items-center justify-center">
+                    <span id="btn-text">Check Eligibility & Submit</span>
+                    <div id="btn-loader" class="loader hidden"></div>
+                </button>
+            </form>
+            <div id="results-section" class="mt-8 pt-6 border-t">
+                <h3 class="text-2xl font-bold text-center text-gray-800 mb-4">Application Decision</h3>
+                <div class="text-center p-6 rounded-lg bg-gray-50">
+                    <p class="text-gray-600">Your Auto-Calculated Credit Score:</p>
+                    <p class="text-7xl font-bold text-[var(--nbcfdc-green)] my-2">80</p>
+                    <div id="decision-box" class="mt-6 text-xl font-bold p-4 rounded-md bg-green-100 text-green-800">Your loan is being procesessed!</div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+        function checkEligibility() {
+            const btn = document.getElementById('submit-btn');
+            const btnText = document.getElementById('btn-text');
+            const btnLoader = document.getElementById('btn-loader');
+            btnText.classList.add('hidden');
+            btnLoader.classList.remove('hidden');
+            btn.disabled = true;
+            // Simulate API call for 2 seconds
+            setTimeout(() => {
+                document.getElementById('results-section').classList.add('active');
+                btn.style.display = 'none'; // Hide button after showing results
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
+

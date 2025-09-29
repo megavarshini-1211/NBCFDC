@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beneficiary Management - NBCFDC Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root { --nbcfdc-blue: #0072BC; --nbcfdc-orange: #F7941E; }
+        body { background-color: #f4f7fc; }
+        @keyframes slideUpFadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+        .animated-item { opacity: 0; animation: slideUpFadeIn 0.6s ease-out forwards; }
+        .content-card { animation-delay: 0.1s; }
+        tbody tr { opacity: 0; animation: slideUpFadeIn 0.5s ease-out forwards; transition: all 0.2s ease-in-out; }
+        tbody tr:hover { background-color: #f7fafc; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        tbody tr:nth-child(1) { animation-delay: 0.2s; } tbody tr:nth-child(2) { animation-delay: 0.3s; }
+        tbody tr:nth-child(3) { animation-delay: 0.4s; }
+        .tab-button { transition: all 0.2s ease-in-out; border-bottom: 4px solid transparent; }
+        .tab-button.active { border-bottom-color: var(--nbcfdc-orange); color: var(--nbcfdc-blue); background-color: #ffffff; }
+    </style>
+</head>
+<body>
+    <header class="bg-[var(--nbcfdc-blue)] text-white p-4 shadow-xl sticky top-0 z-20">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight">NBCFDC Admin Dashboard</h1>
+            <a href="admin_login.html" class="text-sm font-semibold hover:text-gray-200 transition">Logout</a>
+        </div>
+    </header>
+    <nav class="bg-white shadow-lg sticky top-[68px] z-10">
+        <div class="container mx-auto flex overflow-x-auto border-b border-gray-200">
+            <a href="nbcfdc_dashboard.html" class="tab-button text-gray-600 font-semibold py-4 px-6 hover:text-[var(--nbcfdc-blue)]">Dashboard</a>
+            <a href="admin_beneficiary_management.html" class="tab-button active py-4 px-6 font-semibold border-b-4">Beneficiary Management</a>
+            <a href="admin_loan_management.html" class="tab-button text-gray-600 font-semibold py-4 px-6 hover:text-[var(--nbcfdc-blue)]">Loan Management</a>
+            <a href="admin_reports.html" class="tab-button text-gray-600 font-semibold py-4 px-6 hover:text-[var(--nbcfdc-blue)]">Reports</a>
+            <a href="admin_logs.html" class="tab-button text-gray-600 font-semibold py-4 px-6 hover:text-[var(--nbcfdc-blue)]">Logs</a>
+        </div>
+    </nav>
+    <main class="container mx-auto p-6">
+        <div class="bg-white p-8 rounded-xl shadow-2xl animated-item content-card">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b pb-3">Beneficiary Registry</h2>
+            <div class="flex flex-col sm:flex-row gap-4 mb-6 items-center">
+                <input type="text" placeholder="Search by Name, Aadhaar, Phone..." class="flex-grow p-3 border border-gray-300 rounded-lg transition focus:ring-2 focus:ring-[var(--nbcfdc-blue)] focus:outline-none shadow-sm">
+                <button class="bg-[var(--nbcfdc-blue)] text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition font-bold shadow-md">Search</button>
+            </div>
+            <div class="overflow-x-auto border border-gray-100 rounded-lg">
+                <table class="w-full text-left">
+                    <thead class="bg-gray-50 text-gray-600 uppercase text-sm font-semibold border-b border-gray-200">
+                        <tr>
+                            <th class="p-4">Name</th>
+                            <th class="p-4">Aadhaar (Last 4)</th>
+                            <th class="p-4">Score / Risk</th>
+                            <th class="p-4 text-center">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200">
+                        <tr>
+                            <td class="p-4 font-medium text-gray-800">Asha Devi</td>
+                            <td class="p-4 text-gray-600">XXXX-9876</td>
+                            <td class="p-4 font-extrabold text-green-600">80 / Low</td>
+                            <td class="p-4 text-center">
+                                <a href="#" class="text-[var(--nbcfdc-blue)] font-semibold hover:underline hover:text-blue-700 transition">View Details</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 font-medium text-gray-800">Ravi Varma</td>
+                            <td class="p-4 text-gray-600">XXXX-5432</td>
+                            <td class="p-4 font-extrabold text-yellow-600">60 / Medium</td>
+                            <td class="p-4 text-center">
+                                <a href="#" class="text-[var(--nbcfdc-blue)] font-semibold hover:underline hover:text-blue-700 transition">View Details</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 font-medium text-gray-800">Sunita Kumari</td>
+                            <td class="p-4 text-gray-600">XXXX-1122</td>
+                            <td class="p-4 font-extrabold text-red-600">40 / High</td>
+                            <td class="p-4 text-center">
+                                <a href="#" class="text-[var(--nbcfdc-blue)] font-semibold hover:underline hover:text-blue-700 transition">View Details</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

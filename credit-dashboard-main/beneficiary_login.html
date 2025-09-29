@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Registration - NBCFDC</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root { 
+            --nbcfdc-blue: #0072BC; 
+            --nbcfdc-dark-blue: #005691;
+            --nbcfdc-green: #047857; 
+        }
+        
+        /* Base Animation Keyframes */
+        @keyframes popIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+        @keyframes slideUpFadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Container Animation */
+        .animated-card-container { animation: popIn 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; }
+
+        /* Info Panel Animated Gradient */
+        .info-panel {
+            background: linear-gradient(-45deg, var(--nbcfdc-dark-blue), var(--nbcfdc-blue), #00A3C9);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        /* Staggered Form Animation */
+        .form-field { opacity: 0; animation: slideUpFadeIn 0.6s ease-out forwards; }
+        .form-field:nth-child(1) { animation-delay: 0.3s; }
+        .form-field:nth-child(2) { animation-delay: 0.4s; }
+        .form-field:nth-child(3) { animation-delay: 0.5s; }
+        .form-field:nth-child(4) { animation-delay: 0.6s; }
+        .form-field:nth-child(5) { animation-delay: 0.7s; }
+        .form-field:nth-child(6) { animation-delay: 0.8s; }
+        .form-field:nth-child(7) { animation-delay: 0.9s; }
+        .form-field:nth-child(8) { animation-delay: 1.0s; }
+        .form-field:nth-child(9) { animation-delay: 1.1s; }
+        .form-field:nth-child(10) { animation-delay: 1.2s; }
+    </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <div class="w-full max-w-5xl mx-auto animated-card-container">
+        <div class="bg-white rounded-2xl shadow-2xl flex overflow-hidden">
+            <div class="w-2/5 info-panel text-white p-12 flex flex-col justify-center relative overflow-hidden">
+                <h2 class="text-4xl font-extrabold mb-4 z-10">Welcome to the Citizen Portal</h2>
+                <p class="text-blue-200 z-10 text-lg leading-relaxed mb-6">
+                    Log in or register to access all NBCFDC loan schemes, track your application progress, and manage your financial profile effortlessly.
+                </p>
+                
+                <div class="space-y-4 z-10">
+                    <div class="flex items-center space-x-3">
+                        <span class="text-2xl text-white">✅</span>
+                        <p class="font-semibold">Instant Credit Scoring</p>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <span class="text-2xl text-white">💰</span>
+                        <p class="font-semibold">View Loan Eligibility</p>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <span class="text-2xl text-white">🔒</span>
+                        <p class="font-semibold">Secure OTP-Based Registration</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="w-3/5 p-10" x-data="{ tab: 'login' }">
+                <div class="flex border-b mb-8 form-field">
+                    <button @click="tab = 'login'" :class="{ 'border-[var(--nbcfdc-blue)] text-[var(--nbcfdc-blue)] font-bold': tab === 'login', 'border-transparent text-gray-500': tab !== 'login' }" class="w-1/2 py-3 text-lg border-b-4 focus:outline-none transition-all">Login</button>
+                    <button @click="tab = 'register'" :class="{ 'border-[var(--nbcfdc-blue)] text-[var(--nbcfdc-blue)] font-bold': tab === 'register', 'border-transparent text-gray-500': tab !== 'register' }" class="w-1/2 py-3 text-lg border-b-4 focus:outline-none transition-all">Register</button>
+                </div>
+
+                <div x-show="tab === 'login'">
+                    <form action="beneficiary_dashboard.html" class="space-y-6">
+                        <div class="form-field">
+                            <label for="login-mobile" class="block text-sm font-medium text-gray-700 mb-2">Mobile Number</label>
+                            <input type="text" id="login-mobile" placeholder="Enter your 10-digit mobile number" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--nbcfdc-blue)] transition duration-200">
+                        </div>
+                        <div class="form-field">
+                            <label for="login-password" class="block text-sm font-medium text-gray-700 mb-2">Password</label>
+                            <input type="password" id="login-password" placeholder="Enter your password" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--nbcfdc-blue)] transition duration-200">
+                        </div>
+                        <div class="form-field pt-4">
+                            <button type="submit" class="w-full bg-[var(--nbcfdc-blue)] text-white py-3.5 rounded-lg font-bold text-lg hover:bg-blue-700 transition shadow-lg hover:shadow-xl">Login</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div x-show="tab === 'register'">
+                    <form action="beneficiary_dashboard.html" class="space-y-6">
+                        <div class="grid grid-cols-2 gap-6">
+                            <div class="form-field">
+                                <label for="reg-aadhaar" class="block text-sm font-medium text-gray-700 mb-2">Aadhaar Number</label>
+                                <input type="text" id="reg-aadhaar" placeholder="xxxx xxxx xxxx" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--nbcfdc-blue)] transition">
+                            </div>
+                            <div class="form-field">
+                                <label for="reg-mobile" class="block text-sm font-medium text-gray-700 mb-2">Mobile Number</label>
+                                <div class="flex">
+                                    <input type="text" id="reg-mobile" placeholder="10-digit mobile number" class="flex-grow px-4 py-3 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-[var(--nbcfdc-blue)] transition">
+                                    <button type="button" class="bg-gray-200 text-gray-700 px-4 rounded-r-lg text-sm font-semibold hover:bg-gray-300 transition">Send OTP</button>
+                                </div>
+                            </div>
+                            <div class="form-field col-span-2">
+                                <label for="reg-otp" class="block text-sm font-medium text-gray-700 mb-2">Enter OTP</label>
+                                <input type="text" id="reg-otp" placeholder="Enter 6-digit OTP sent to your mobile" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--nbcfdc-blue)] transition">
+                            </div>
+                            <div class="form-field">
+                                <label for="reg-name" class="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+                                <input type="text" id="reg-name" placeholder="As per Aadhaar" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--nbcfdc-blue)] transition">
+                            </div>
+                            <div class="form-field">
+                                <label for="reg-email" class="block text-sm font-medium text-gray-700 mb-2">Email (Optional)</label>
+                                <input type="email" id="reg-email" placeholder="your.email@example.com" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--nbcfdc-blue)] transition">
+                            </div>
+                            <div class="form-field">
+                                <label for="reg-password" class="block text-sm font-medium text-gray-700 mb-2">Create Password</label>
+                                <input type="password" id="reg-password" placeholder="Create a strong password" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--nbcfdc-blue)] transition">
+                            </div>
+                            <div class="form-field">
+                                <label for="reg-caste" class="block text-sm font-medium text-gray-700 mb-2">Caste Category</label>
+                                <select id="reg-caste" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--nbcfdc-blue)] transition">
+                                    <option>Select Category</option>
+                                    <option>OBC</option>
+                                    <option>EBC</option>
+                                    <option>De-notified Tribes</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mt-6 form-field col-span-2">
+                            <button type="submit" class="w-full bg-[var(--nbcfdc-blue)] text-white py-3.5 rounded-lg font-bold text-lg hover:bg-blue-700 transition shadow-lg hover:shadow-xl">Register</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+</body>
+</html>

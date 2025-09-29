@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - NBCFDC</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root { --nbcfdc-blue: #0072BC; --nbcfdc-green: #006838; }
+        @keyframes slideUpFadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animated-item { 
+            opacity: 0;
+            animation: slideUpFadeIn 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+        .header { animation-delay: 0.1s; }
+        .welcome-msg { animation-delay: 0.2s; }
+        .card-1 { animation-delay: 0.4s; }
+        .card-2 { animation-delay: 0.5s; }
+        
+        .interactive-card { transition: all 0.3s ease; }
+        .interactive-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 20px -5px rgba(0, 114, 188, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <header class="bg-[var(--nbcfdc-blue)] text-white p-4 shadow-lg animated-item header">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-xl font-bold">NBCFDC Portal</h1>
+            <div>
+                <a href="beneficiary_profile.html" class="text-sm hover:underline">My Profile</a>
+                <a href="beneficiary_login.html" class="text-sm ml-4 bg-white text-[var(--nbcfdc-blue)] px-3 py-1.5 rounded-md font-semibold transition hover:bg-gray-200">Logout</a>
+            </div>
+        </div>
+    </header>
+    <main class="container mx-auto p-6">
+        <h2 class="animated-item welcome-msg text-3xl font-bold text-gray-800 mb-6">Welcome, Asha Devi!</h2>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div class="animated-item card-1 lg:col-span-1 bg-white p-6 rounded-2xl shadow-xl text-center flex flex-col justify-center">
+                <h3 class="text-lg font-semibold text-gray-600">Your Credit Score</h3>
+                <p class="text-8xl font-bold text-[var(--nbcfdc-green)] my-4">80</p>
+                <div class="mt-6">
+                    <h3 class="text-lg font-semibold text-gray-600">Loan Eligibility</h3>
+                    <p class="mt-2 bg-green-100 text-green-800 font-semibold py-2 px-4 rounded-full text-lg">Eligible</p>
+                </div>
+            </div>
+            <div class="animated-item card-2 lg:col-span-2 space-y-5">
+                <a href="beneficiary_loan_request.html" class="interactive-card block w-full text-left p-6 bg-gradient-to-r from-blue-600 to-blue-800 text-white rounded-2xl shadow-lg">
+                    <h4 class="font-bold text-2xl">Apply for a New Loan</h4>
+                    <p class="mt-1 text-blue-100">Get an instant decision based on your credit score.</p>
+                </a>
+                <a href="beneficiary_schemes.html" class="interactive-card block w-full text-left p-6 bg-white rounded-2xl shadow-lg">
+                    <h4 class="font-bold text-2xl text-gray-800">Explore Loan Schemes</h4>
+                    <p class="mt-1 text-gray-600">View details of all available financial support schemes.</p>
+                </a>
+                <a href="beneficiary_loan_history.html" class="interactive-card block w-full text-left p-6 bg-white rounded-2xl shadow-lg">
+                    <h4 class="font-bold text-2xl text-gray-800">View Past Loans & Repayments</h4>
+                    <p class="mt-1 text-gray-600">Check your loan history and download statements.</p>
+                </a>
+                <a href="beneficiary_profile.html" class="interactive-card block w-full text-left p-6 bg-white rounded-2xl shadow-lg">
+                     <h4 class="font-bold text-2xl text-gray-800">Update Profile & Manage Consent</h4>
+                    <p class="mt-1 text-gray-600">Manage your personal information and data sharing consents.</p>
+                </a>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
+

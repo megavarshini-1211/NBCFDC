@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan History - NBCFDC</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root { --nbcfdc-blue: #0072BC; }
+        @keyframes slideUpFadeIn {
+            from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); }
+        }
+        .animated-item { opacity: 0; animation: slideUpFadeIn 0.6s ease-out forwards; }
+        .header { animation-delay: 0.1s; }
+        .main-card { animation-delay: 0.2s; }
+        
+        tbody tr { opacity: 0; animation: slideUpFadeIn 0.5s ease-out forwards; transition: background-color 0.3s ease; }
+        tbody tr:hover { background-color: #f7fafc; transform: scale(1.02); }
+        tbody tr:nth-child(1) { animation-delay: 0.4s; }
+        tbody tr:nth-child(2) { animation-delay: 0.5s; }
+        tbody tr:nth-child(3) { animation-delay: 0.6s; }
+        .download-btn { transition: all 0.3s ease; }
+        .download-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <header class="bg-[var(--nbcfdc-blue)] text-white p-4 shadow-lg animated-item header">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-xl font-bold">NBCFDC Portal</h1>
+            <a href="beneficiary_dashboard.html" class="text-sm hover:underline">← Back to Dashboard</a>
+        </div>
+    </header>
+    <main class="container mx-auto p-6">
+        <div class="animated-item main-card bg-white p-8 rounded-2xl shadow-2xl">
+            <div class="flex flex-col sm:flex-row justify-between sm:items-center mb-6">
+                <h2 class="text-3xl font-bold text-gray-800">My Loan History</h2>
+                <button class="download-btn mt-4 sm:mt-0 bg-gray-800 text-white px-5 py-2.5 rounded-md font-semibold">Download Certificate (PDF)</button>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left">
+                    <thead class="text-gray-600 uppercase text-sm">
+                        <tr><th class="p-4">Loan ID</th><th class="p-4">Amount</th><th class="p-4">Date</th><th class="p-4">Status</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-t"><td class="p-4 font-medium">#56432</td><td class="p-4">₹ 75,000</td><td class="p-4">15-Aug-23</td><td class="p-4"><span class="bg-green-100 text-green-800 px-3 py-1 rounded-full font-semibold text-xs">Active</span></td></tr>
+                        <tr class="border-t"><td class="p-4 font-medium">#41298</td><td class="p-4">₹ 50,000</td><td class="p-4">01-Feb-22</td><td class="p-4"><span class="bg-red-100 text-red-800 px-3 py-1 rounded-full font-semibold text-xs">Overdue</span></td></tr>
+                        <tr class="border-t"><td class="p-4 font-medium">#35871</td><td class="p-4">₹ 30,000</td><td class="p-4">10-Mar-20</td><td class="p-4"><span class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full font-semibold text-xs">Closed</span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
+

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - NBCFDC</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root { --nbcfdc-blue: #0072BC; }
+        
+        /* Base Animation Keyframes */
+        @keyframes popIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+        @keyframes slideUpFadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes panDiagonal { 
+            0% { background-position: 0% 0%; } 
+            100% { background-position: 100% 100%; } 
+        }
+
+        /* Background Animated Texture */
+        .login-bg {
+            background: linear-gradient(rgba(244, 247, 252, 0.95), rgba(244, 247, 252, 0.95)), 
+                        url('https://source.unsplash.com/1600x900/?abstract-grid-pattern') no-repeat center center / 200%;
+            animation: panDiagonal 120s linear infinite; /* Very slow, subtle motion */
+        }
+
+        /* Card and Form Animation */
+        .login-card { 
+            animation: popIn 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; 
+            border-top: 5px solid var(--nbcfdc-blue); 
+        }
+        .form-field { animation: slideUpFadeIn 0.5s ease-out forwards; opacity: 0; }
+        .form-field:nth-child(1) { animation-delay: 0.2s; }
+        .form-field:nth-child(2) { animation-delay: 0.3s; }
+        .form-field:nth-child(3) { animation-delay: 0.4s; }
+        .form-field:nth-child(4) { animation-delay: 0.5s; }
+        
+        .submit-button { 
+            transition: all 0.3s ease; 
+            background: linear-gradient(90deg, #005691, var(--nbcfdc-blue));
+            box-shadow: 0 4px 10px rgba(0, 114, 188, 0.3);
+        }
+        .submit-button:hover { 
+            transform: scale(1.01); 
+            box-shadow: 0 8px 20px rgba(0, 114, 188, 0.4); 
+        }
+    </style>
+</head>
+<body class="login-bg flex items-center justify-center min-h-screen relative">
+    <div class="login-card w-full max-w-sm bg-white rounded-xl shadow-2xl p-8 transform hover:shadow-3xl">
+        <div class="text-center mb-8">
+            <img src="NBCFDC_logo.png" alt="NBCFDC Logo" class="h-12 mx-auto mb-3 form-field" style="animation-delay: 0.1s;">
+            <h1 class="text-3xl font-extrabold text-gray-800 form-field" style="animation-delay: 0.15s;">Admin Portal</h1>
+            <p class="text-sm text-gray-500 mt-1 form-field" style="animation-delay: 0.2s;">Secure access for NBCFDC officials</p>
+        </div>
+        <form action="nbcfdc_dashboard.html" method="get" class="space-y-5">
+            <div class="form-field">
+                <label for="admin-user" class="block text-sm font-medium text-gray-700 mb-1">Username</label>
+                <input type="text" id="admin-user" placeholder="Enter your username" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--nbcfdc-blue)] focus:border-[var(--nbcfdc-blue)] transition duration-200" required>
+            </div>
+            <div class="form-field">
+                <label for="admin-password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                <input type="password" id="admin-password" placeholder="Enter your password" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--nbcfdc-blue)] focus:border-[var(--nbcfdc-blue)] transition duration-200" required>
+            </div>
+            <div class="form-field">
+                <label for="admin-otp" class="block text-sm font-medium text-gray-700 mb-1">OTP</label>
+                <input type="text" id="admin-otp" placeholder="Enter One-Time Password" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--nbcfdc-blue)] focus:border-[var(--nbcfdc-blue)] transition duration-200" required>
+            </div>
+            <div class="form-field pt-4">
+                <button type="submit" class="submit-button w-full text-white py-3.5 rounded-lg font-bold text-lg tracking-wide uppercase">Secure Login</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Schemes - NBCFDC</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root { --nbcfdc-blue: #0072BC; }
+        @keyframes slideUpFadeIn {
+            from { opacity: 0; transform: translateY(20px); } 
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animated-item { 
+            opacity: 0;
+            animation: slideUpFadeIn 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+        .header { animation-delay: 0.1s; }
+        .title-section { animation-delay: 0.2s; }
+        
+        .scheme-card {
+            opacity: 0;
+            animation: slideUpFadeIn 0.5s ease-out forwards;
+            transition: all 0.3s ease;
+        }
+        .scheme-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 20px -5px rgba(0, 114, 188, 0.15);
+        }
+        /* Staggered animation for scheme cards */
+        .scheme-card:nth-child(1) { animation-delay: 0.3s; }
+        .scheme-card:nth-child(2) { animation-delay: 0.4s; }
+        .scheme-card:nth-child(3) { animation-delay: 0.5s; }
+        .scheme-card:nth-child(4) { animation-delay: 0.6s; }
+        .scheme-card:nth-child(5) { animation-delay: 0.7s; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <header class="bg-[var(--nbcfdc-blue)] text-white p-4 shadow-lg animated-item header">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-xl font-bold">NBCFDC Portal</h1>
+            <a href="beneficiary_dashboard.html" class="text-sm hover:underline">← Back to Dashboard</a>
+        </div>
+    </header>
+    <main class="container mx-auto p-6">
+        <div class="animated-item title-section mb-8">
+            <h2 class="text-4xl font-bold text-gray-800">Explore Our Schemes</h2>
+            <p class="text-gray-600 mt-2">Find the right financial and skill support for your needs.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Scheme 1: General Loan Scheme -->
+            <div class="scheme-card bg-white p-6 rounded-2xl shadow-lg border-t-4 border-blue-600">
+                <h3 class="text-xl font-bold text-gray-800 mb-3">General Loan Scheme</h3>
+                <p class="text-sm text-gray-600 mb-4">Concessional loans for various income-generating activities.</p>
+                <ul class="text-sm space-y-2 text-gray-700">
+                    <li><strong>Max. Loan:</strong> Up to ₹15 lakh</li>
+                    <li><strong>Eligibility:</strong> Family income ≤ ₹3 lakh p.a.</li>
+                    <li><strong>Interest:</strong> 6% to 8%</li>
+                    <li><strong>Repayment:</strong> Up to 8 years</li>
+                </ul>
+            </div>
+
+            <!-- Scheme 2: Micro Finance Scheme -->
+            <div class="scheme-card bg-white p-6 rounded-2xl shadow-lg border-t-4 border-teal-500">
+                <h3 class="text-xl font-bold text-gray-800 mb-3">Micro Finance Scheme</h3>
+                <p class="text-sm text-gray-600 mb-4">Small loans for tiny enterprises, with a focus on women entrepreneurs.</p>
+                <ul class="text-sm space-y-2 text-gray-700">
+                    <li><strong>Max. Loan:</strong> Up to ₹60,000</li>
+                    <li><strong>Focus:</strong> Mahila Samriddhi Yojana</li>
+                    <li><strong>Funding:</strong> NBCFDC funds 90–95%</li>
+                    <li><strong>Repayment:</strong> Up to 4 years</li>
+                </ul>
+            </div>
+
+            <!-- Scheme 3: Skill Development (SDTP) -->
+            <div class="scheme-card bg-white p-6 rounded-2xl shadow-lg border-t-4 border-purple-500">
+                <h3 class="text-xl font-bold text-gray-800 mb-3">Skill Development (SDTP)</h3>
+                <p class="text-sm text-gray-600 mb-4">Short-term skill training, upskilling, and reskilling programs.</p>
+                <ul class="text-sm space-y-2 text-gray-700">
+                    <li><strong>Target Group:</strong> Backward Classes, EBCs, etc.</li>
+                    <li><strong>Standards:</strong> NSQF Compliant</li>
+                    <li><strong>Financial Aid:</strong> Stipend of ₹1,000/month</li>
+                </ul>
+            </div>
+
+            <!-- Scheme 4: VETLS -->
+            <div class="scheme-card bg-white p-6 rounded-2xl shadow-lg border-t-4 border-orange-500">
+                <h3 class="text-xl font-bold text-gray-800 mb-3">Vocational Training Loan (VETLS)</h3>
+                <p class="text-sm text-gray-600 mb-4">Loans for vocational training courses from 6 months to 2 years.</p>
+                <ul class="text-sm space-y-2 text-gray-700">
+                    <li><strong>Max. Loan:</strong> Up to ₹1.5 lakh</li>
+                    <li><strong>Eligibility:</strong> Family income ≤ ₹3 lakh p.a.</li>
+                    <li><strong>Interest:</strong> 4% p.a. (with rebate for women)</li>
+                    <li><strong>Repayment:</strong> Up to 7 years</li>
+                </ul>
+            </div>
+
+            <!-- Scheme 5: Technology Upgradation -->
+            <div class="scheme-card bg-white p-6 rounded-2xl shadow-lg border-t-4 border-gray-700">
+                <h3 class="text-xl font-bold text-gray-800 mb-3">Technology Upgradation Scheme</h3>
+                <p class="text-sm text-gray-600 mb-4">Financial aid for technology, tools, and infrastructure in enterprise clusters.</p>
+                 <ul class="text-sm space-y-2 text-gray-700">
+                    <li><strong>Objective:</strong> Improve productivity & quality</li>
+                    <li><strong>Funding:</strong> 90–100% financial assistance</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

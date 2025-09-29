@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NBCFDC | Empowering Backward Classes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root { 
+            --nbcfdc-blue: #0072BC; 
+            --nbcfdc-orange: #F7941E;
+        }
+        
+        /* Base Animation Keyframes */
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes subtlePan { 0% { background-position: 0% 0%; } 100% { background-position: 100% 100%; } }
+
+        /* Hero Styling & Animation */
+        .main-hero { 
+            background: linear-gradient(rgba(0, 114, 188, 0.85), rgba(0, 114, 188, 0.7)), 
+                        url('https://source.unsplash.com/1600x900/?indian-women-entrepreneurs') no-repeat center center / cover;
+            background-size: 150%; /* Larger to allow panning */
+            min-height: 85vh;
+            animation: fadeIn 1s ease-in-out forwards, subtlePan 60s linear infinite alternate;
+        }
+        
+        /* Animated Component Classes */
+        .animated-item { opacity: 0; animation: slideInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; }
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.3s; }
+        .delay-3 { animation-delay: 0.5s; }
+        .delay-4 { animation-delay: 0.7s; }
+        .delay-5 { animation-delay: 0.9s; }
+
+        .portal-card { 
+            transition: all 0.3s ease; 
+            border-bottom: 5px solid transparent;
+        }
+        .portal-card:hover { 
+            transform: translateY(-8px); 
+            box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.25); 
+        }
+        .card-1 { border-color: var(--nbcfdc-orange); }
+        .card-2 { border-color: var(--nbcfdc-blue); }
+    </style>
+</head>
+<body class="min-h-screen bg-gray-50">
+    <header class="bg-white shadow-md p-4 sticky top-0 z-20">
+        <div class="container mx-auto flex justify-between items-center animated-item delay-1">
+            <div class="flex items-center space-x-3">
+                <img src="NBCFDC_logo.png" alt="NBCFDC Logo" class="h-10">
+                <span class="text-2xl font-bold text-[var(--nbcfdc-blue)]">NBCFDC</span>
+            </div>
+            <nav class="space-x-6 text-gray-700 font-medium hidden md:flex">
+                <a href="#about" class="hover:text-[var(--nbcfdc-blue)] transition">About Us</a>
+                <a href="#schemes" class="hover:text-[var(--nbcfdc-blue)] transition">Schemes</a>
+                <a href="#contact" class="hover:text-[var(--nbcfdc-blue)] transition">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="main-hero flex items-center justify-center text-white p-8">
+        <div class="container mx-auto text-center">
+            <h1 class="animated-item delay-2 text-5xl md:text-7xl font-extrabold mb-4 leading-tight tracking-tight drop-shadow-lg" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
+                Transforming Lives Through Financial Inclusion
+            </h1>
+            <p class="animated-item delay-3 text-xl md:text-2xl font-light mb-10 opacity-95 max-w-4xl mx-auto">
+                The National Backward Classes Finance and Development Corporation is committed to the upliftment of the Backward Classes.
+            </p>
+
+            <div class="flex flex-col md:flex-row justify-center gap-8 pt-4">
+                <a href="beneficiary_login.html" class="portal-card card-1 animated-item delay-4 w-full md:w-96 p-6 rounded-xl bg-white text-gray-800 shadow-2xl hover:bg-gray-50">
+                    <h2 class="text-2xl font-bold text-[var(--nbcfdc-orange)] mb-1">Beneficiary Portal</h2>
+                    <p class="text-sm text-gray-600">Apply for a loan or track your application status.</p>
+                </a>
+                <a href="admin_login.html" class="portal-card card-2 animated-item delay-5 w-full md:w-96 p-6 rounded-xl bg-white text-gray-800 shadow-2xl hover:bg-gray-50">
+                    <h2 class="text-2xl font-bold text-[var(--nbcfdc-blue)] mb-1">Admin / Partner Portal</h2>
+                    <p class="text-sm text-gray-600">Secure access for officials and State Channelizing Agencies.</p>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <section id="about" class="py-16 bg-white">
+        <div class="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="animated-item delay-4">
+                <span class="text-lg font-semibold text-[var(--nbcfdc-orange)] uppercase mb-2 block">Our Mandate</span>
+                <h2 class="text-4xl font-bold text-gray-800 mb-6">A Catalyst for Social and Economic Growth</h2>
+                <p class="text-gray-600 text-lg leading-relaxed mb-6">
+                    NBCFDC provides financial assistance for economic and developmental activities for the benefit of Backward Classes, ensuring equitable growth and self-employment opportunities across the nation.
+                </p>
+                <ul class="space-y-3 text-gray-700">
+                    <li class="flex items-center"><span class="text-[var(--nbcfdc-blue)] font-bold text-xl mr-3">✓</span> Concessional Loans: Affordable credit for diverse enterprises.</li>
+                    <li class="flex items-center"><span class="text-[var(--nbcfdc-blue)] font-bold text-xl mr-3">✓</span> Skill Development: Vocational training to enhance employability.</li>
+                    <li class="flex items-center"><span class="text-[var(--nbcfdc-blue)] font-bold text-xl mr-3">✓</span> Digital Empowerment: Streamlined, transparent online service delivery.</li>
+                </ul>
+            </div>
+            <div class="rounded-xl overflow-hidden shadow-2xl animated-item delay-5">
+                <img src="https://source.unsplash.com/800x600/?indian-villagers" alt="Community members benefiting" class="w-full h-full object-cover transform transition duration-500 hover:scale-105">
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-800 text-gray-400 p-8 text-center text-sm" id="contact">
+        <div class="container mx-auto">
+            <p class="animated-item delay-5">NBCFDC, Ministry of Social Justice and Empowerment, Government of India.</p>
+        </div>
+    </footer>
+</body>
+</html>

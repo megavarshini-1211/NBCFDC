@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - NBCFDC</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root { --nbcfdc-green: #006838; --nbcfdc-orange: #F7941E; --nbcfdc-blue: #0072BC; }
+        body { background-color: #f4f7fc; }
+        @keyframes slideUpFadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+        .animated-item { opacity: 0; animation: slideUpFadeIn 0.6s ease-out forwards; }
+        .kpi-card { 
+            transition: all 0.3s ease; 
+            border-left: 5px solid var(--nbcfdc-blue); /* Accent border */
+        }
+        .kpi-card:hover { transform: translateY(-3px); box-shadow: 0 8px 15px -3px rgba(0, 0, 0, 0.15); }
+        .kpi-card:nth-child(1) { animation-delay: 0.1s; border-color: var(--nbcfdc-blue); } 
+        .kpi-card:nth-child(2) { animation-delay: 0.2s; border-color: var(--nbcfdc-green); }
+        .kpi-card:nth-child(3) { animation-delay: 0.3s; border-color: #DC2626; /* Red */ } 
+        .kpi-card:nth-child(4) { animation-delay: 0.4s; border-color: var(--nbcfdc-orange); }
+        .content-section { animation-delay: 0.5s; }
+        .tab-button { transition: all 0.2s ease-in-out; border-bottom: 4px solid transparent; }
+        .tab-button.active { border-bottom-color: var(--nbcfdc-orange); color: var(--nbcfdc-blue); background-color: #ffffff; }
+    </style>
+</head>
+<body>
+    <header class="bg-[var(--nbcfdc-blue)] text-white p-4 shadow-xl sticky top-0 z-20">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight">NBCFDC Admin Dashboard</h1>
+            <a href="admin_login.html" class="text-sm font-semibold hover:text-gray-200 transition">Logout</a>
+        </div>
+    </header>
+    <nav class="bg-white shadow-lg sticky top-[68px] z-10">
+        <div class="container mx-auto flex overflow-x-auto border-b border-gray-200">
+            <a href="nbcfdc_dashboard.html" class="tab-button active py-4 px-6 font-semibold border-b-4">Dashboard</a>
+            <a href="admin_beneficiary_management.html" class="tab-button text-gray-600 font-semibold py-4 px-6 hover:text-[var(--nbcfdc-blue)]">Beneficiary Management</a>
+            <a href="admin_loan_management.html" class="tab-button text-gray-600 font-semibold py-4 px-6 hover:text-[var(--nbcfdc-blue)]">Loan Management</a>
+            <a href="admin_reports.html" class="tab-button text-gray-600 font-semibold py-4 px-6 hover:text-[var(--nbcfdc-blue)]">Reports</a>
+            <a href="admin_logs.html" class="tab-button text-gray-600 font-semibold py-4 px-6 hover:text-[var(--nbcfdc-blue)]">Logs</a>
+        </div>
+    </nav>
+    <main class="container mx-auto p-4 md:p-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <div class="kpi-card animated-item bg-white p-6 rounded-xl shadow-lg">
+                <h3 class="text-sm font-bold text-gray-500 uppercase">Total Beneficiaries</h3>
+                <p class="text-4xl font-extrabold mt-2 text-[var(--nbcfdc-blue)]">472,819</p>
+            </div>
+            <div class="kpi-card animated-item bg-white p-6 rounded-xl shadow-lg">
+                <h3 class="text-sm font-bold text-gray-500 uppercase">Active Loans</h3>
+                <p class="text-4xl font-extrabold mt-2 text-[var(--nbcfdc-green)]">85,321</p>
+            </div>
+            <div class="kpi-card animated-item bg-white p-6 rounded-xl shadow-lg">
+                <h3 class="text-sm font-bold text-gray-500 uppercase">High Risk Users</h3>
+                <p class="text-4xl font-extrabold mt-2 text-red-600">4,129</p>
+            </div>
+            <div class="kpi-card animated-item bg-white p-6 rounded-xl shadow-lg">
+                <h3 class="text-sm font-bold text-gray-500 uppercase">Approval Rate</h3>
+                <p class="text-4xl font-extrabold mt-2 text-[var(--nbcfdc-orange)]">92.5%</p>
+            </div>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div class="lg:col-span-2 animated-item content-section bg-white p-6 rounded-xl shadow-lg">
+                <h2 class="text-xl font-bold mb-4 text-gray-800 border-b pb-2">Priority Notifications 🔔</h2>
+                <ul class="space-y-4">
+                    <li class="p-4 bg-yellow-50 border-l-4 border-yellow-500 rounded-lg flex justify-between items-center">
+                        <div>
+                            <strong class="text-gray-800">Pending Review:</strong> Ravi Varma (₹60k). Needs manual **KYC validation**.
+                        </div>
+                        <a href="#" class="text-sm font-semibold text-yellow-600 hover:text-yellow-700">Review →</a>
+                    </li>
+                    <li class="p-4 bg-red-50 border-l-4 border-red-500 rounded-lg flex justify-between items-center">
+                        <div>
+                            <strong class="text-gray-800">Overdue Alert:</strong> Sunita Kumari's loan is **15 days overdue**. Initiate follow-up.
+                        </div>
+                        <a href="#" class="text-sm font-semibold text-red-600 hover:text-red-700">Action →</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="animated-item content-section bg-white p-6 rounded-xl shadow-lg flex flex-col">
+                <h2 class="text-xl font-bold mb-4 text-gray-800 border-b pb-2">Beneficiary Risk Bands</h2>
+                <div class="flex-grow flex items-center justify-center">
+                    <canvas id="riskBandChart" class="max-h-80"></canvas>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>new Chart(document.getElementById('riskBandChart'),{type:'doughnut',data:{labels:['Low','Medium','High'],datasets:[{data:[350000,118690,4129],backgroundColor:['#059669','#F59E0B','#DC2626']}]},options:{responsive:true,plugins:{legend:{position:'bottom', labels: { boxWidth: 10, usePointStyle: true, font: { family: 'inherit' }}}}}});</script>
+</body>
+</html>

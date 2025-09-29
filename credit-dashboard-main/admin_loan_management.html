@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Management - NBCFDC Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root { --nbcfdc-blue: #0072BC; }
+        @keyframes slideUpFadeIn {
+            from { opacity: 0; transform: translateY(20px); } 
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animated-item { 
+            opacity: 0;
+            animation: slideUpFadeIn 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+        .header { animation-delay: 0.1s; }
+        .title-section { animation-delay: 0.2s; }
+        .search-section { animation-delay: 0.3s; }
+        .table-container { animation-delay: 0.4s; }
+        
+        tr.table-row {
+            opacity: 0;
+            animation: slideUpFadeIn 0.5s ease-out forwards;
+        }
+        /* Staggered animation for table rows */
+        tr.table-row:nth-child(1) { animation-delay: 0.5s; }
+        tr.table-row:nth-child(2) { animation-delay: 0.6s; }
+        tr.table-row:nth-child(3) { animation-delay: 0.7s; }
+        tr.table-row:nth-child(4) { animation-delay: 0.8s; }
+        tr.table-row:nth-child(5) { animation-delay: 0.9s; }
+
+        .action-button { transition: all 0.2s ease; }
+        .action-button:hover { transform: scale(1.05); }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <header class="bg-[var(--nbcfdc-blue)] shadow-lg animated-item header">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-bold text-white">NBCFDC Admin</h1>
+            <nav class="space-x-4 text-sm font-semibold">
+                <a href="nbcfdc_dashboard.html" class="text-blue-200 hover:text-white transition">Dashboard</a>
+                <a href="admin_beneficiary_management.html" class="text-blue-200 hover:text-white transition">Beneficiaries</a>
+                <a href="admin_loan_management.html" class="text-white font-bold border-b-2 border-white pb-1">Loans</a>
+                <a href="admin_reports.html" class="text-blue-200 hover:text-white transition">Reports</a>
+                <a href="admin_logs.html" class="text-blue-200 hover:text-white transition">Logs</a>
+                <a href="admin_login.html" class="text-blue-200 hover:text-white transition">Logout</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto p-6">
+        <div class="animated-item title-section mb-6">
+            <h2 class="text-3xl font-bold text-gray-800">Manage Loan Requests</h2>
+            <p class="text-gray-500">Review, approve, or reject pending loan applications.</p>
+        </div>
+        
+        <!-- Search Section -->
+        <div class="animated-item search-section mb-6">
+            <div class="bg-white p-4 rounded-lg shadow-md">
+                <div class="flex items-center space-x-4">
+                    <input type="text" placeholder="Search by Name, Loan ID, or Status..." class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--nbcfdc-blue)]">
+                    <button class="bg-[var(--nbcfdc-blue)] text-white px-6 py-2 rounded-md font-semibold hover:bg-blue-700 transition">Search</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="animated-item table-container bg-white rounded-lg shadow-xl overflow-hidden">
+            <div class="overflow-x-auto">
+                <table class="w-full text-left">
+                    <thead class="bg-gray-100">
+                        <tr>
+                            <th class="p-4 font-bold">Loan ID</th>
+                            <th class="p-4 font-bold">Beneficiary Name</th>
+                            <th class="p-4 font-bold">Amount</th>
+                            <th class="p-4 font-bold">Status</th>
+                            <th class="p-4 font-bold">Date</th>
+                            <th class="p-4 font-bold text-center">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y">
+                        <tr class="table-row">
+                            <td class="p-4">LN-87234</td>
+                            <td class="p-4">Rakesh Kumar</td>
+                            <td class="p-4">₹50,000</td>
+                            <td class="p-4"><span class="bg-yellow-100 text-yellow-800 font-semibold px-2 py-1 rounded-full text-xs">Pending</span></td>
+                            <td class="p-4">25/09/2025</td>
+                            <td class="p-4 flex justify-center space-x-2">
+                                <button class="action-button bg-green-500 text-white px-3 py-1 rounded-md text-sm font-semibold">Approve</button>
+                                <button class="action-button bg-red-500 text-white px-3 py-1 rounded-md text-sm font-semibold">Reject</button>
+                            </td>
+                        </tr>
+                        <tr class="table-row">
+                            <td class="p-4">LN-87233</td>
+                            <td class="p-4">Priya Sharma</td>
+                            <td class="p-4">₹1,20,000</td>
+                            <td class="p-4"><span class="bg-green-100 text-green-800 font-semibold px-2 py-1 rounded-full text-xs">Approved</span></td>
+                            <td class="p-4">24/09/2025</td>
+                            <td class="p-4 text-center text-gray-500 text-sm">--</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td class="p-4">LN-87232</td>
+                            <td class="p-4">Amit Singh</td>
+                            <td class="p-4">₹75,000</td>
+                            <td class="p-4"><span class="bg-red-100 text-red-800 font-semibold px-2 py-1 rounded-full text-xs">Rejected</span></td>
+                            <td class="p-4">23/09/2025</td>
+                            <td class="p-4 text-center text-gray-500 text-sm">--</td>
+                        </tr>
+                         <tr class="table-row">
+                            <td class="p-4">LN-87231</td>
+                            <td class="p-4">Sunita Devi</td>
+                            <td class="p-4">₹25,000</td>
+                            <td class="p-4"><span class="bg-yellow-100 text-yellow-800 font-semibold px-2 py-1 rounded-full text-xs">Pending</span></td>
+                            <td class="p-4">22/09/2025</td>
+                            <td class="p-4 flex justify-center space-x-2">
+                                <button class="action-button bg-green-500 text-white px-3 py-1 rounded-md text-sm font-semibold">Approve</button>
+                                <button class="action-button bg-red-500 text-white px-3 py-1 rounded-md text-sm font-semibold">Reject</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
+
+
