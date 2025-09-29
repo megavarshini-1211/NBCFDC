@@ -3,7 +3,7 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from .views import (
-    BeneficiaryViewSet, LoanViewSet, EmiDetailViewSet,
+    GetBeneficiaryScore, BeneficiaryViewSet, LoanViewSet, EmiDetailViewSet,
     AccountTransactionViewSet, MobileRechargeViewSet, ElectricityBillViewSet,
     RationCardViewSet, PDSTransactionViewSet, UtilityBillViewSet
 )
@@ -23,4 +23,14 @@ router.register(r'utility-bills', UtilityBillViewSet, basename='utility-bill')
 # The API URLs are now determined automatically by the router.
 urlpatterns = [
     path('', include(router.urls)), # Include the router-generated URLs
+]
+
+# Define the URL patterns
+urlpatterns = [
+    # This includes all your previous model endpoints like /api/beneficiaries/
+    path('', include(router.urls)), 
+    
+    # --- ADD THIS NEW URL PATTERN FOR THE CSV SCORE LOOKUP ---
+    # This will handle requests like /api/score/NBC_001/
+    path('score/<str:beneficiary_id>/', GetBeneficiaryScore.as_view(), name='get-score'),
 ]
